@@ -265,7 +265,9 @@ class JinshuAsyncPipeline(object):
 
 
 
-Github：https://github.com/aduner/jianshu-crawl
+**Github：https://github.com/aduner/jianshu-crawl**
 
-博客地址：https://www.cnblogs.com/aduner
+**博客地址：https://www.cnblogs.com/aduner/p/12852616.html**
+
+
 
