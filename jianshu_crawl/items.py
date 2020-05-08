@@ -16,4 +16,4 @@ class JianshuCrawlItem(scrapy.Item):
     pub_time = scrapy.Field()
     origin_url = scrapy.Field()
     article_id = scrapy.Field()
-    pass
+

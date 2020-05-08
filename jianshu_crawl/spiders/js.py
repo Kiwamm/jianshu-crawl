@@ -19,7 +19,7 @@ class JsSpider(CrawlSpider):
         author = response.xpath("//a[@class='_1OhGeD']/text()").get()
         avatar = response.xpath("//img[@class='_13D2Eh']/@src").get()
         pub_time = response.xpath("//div[@class='s-dsoj']/time/text()").get()
-        content = response.xpath("//article[@class='_2rhmJa']").get().split()[-1]
+        content = response.xpath("//article[@class='_2rhmJa']").get()
         origin_url = response.url
         article_id = origin_url.split("?")[0].split("/")[-1]
         print(title)  # 提示爬取的文章

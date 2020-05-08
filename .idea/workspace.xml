@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="87bbe584-f06e-46ab-ae54-15d9dbe0bc6d" name="Default Changelist" comment="" />
+    <list default="true" id="87bbe584-f06e-46ab-ae54-15d9dbe0bc6d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/af5cf0c7-5a80-45e1-a856-899c8a40d2ad.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/af5cf0c7-5a80-45e1-a856-899c8a40d2ad.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jianshu_crawl/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/jianshu_crawl/items.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jianshu_crawl/middlewares.py" beforeDir="false" afterPath="$PROJECT_DIR$/jianshu_crawl/middlewares.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jianshu_crawl/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/jianshu_crawl/pipelines.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jianshu_crawl/spiders/js.py" beforeDir="false" afterPath="$PROJECT_DIR$/jianshu_crawl/spiders/js.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +50,11 @@
     </expand>
     <select />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1bLswNCNdJcOIIGWTrRwc0E3kry" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -50,6 +63,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql&#10;mongo" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -99,7 +113,22 @@
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@1f55ea35" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@3093337f" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -121,7 +150,7 @@
       <workItem from="1588512783489" duration="604000" />
       <workItem from="1588513391468" duration="14247000" />
       <workItem from="1588848090893" duration="690000" />
-      <workItem from="1588857729484" duration="2053000" />
+      <workItem from="1588857729484" duration="8678000" />
     </task>
     <servers />
   </component>
@@ -139,25 +168,25 @@
     </state>
     <state x="471" y="212" width="424" height="484" key="FileChooserDialogImpl/45.27.1875.935@45.27.1875.935" timestamp="1588848181238" />
     <state x="471" y="212" width="424" height="484" key="FileChooserDialogImpl/45.27.1875.937@45.27.1875.937" timestamp="1588513472619" />
-    <state width="1821" height="236" key="GridCell.Tab.0.bottom" timestamp="1588687989896">
+    <state width="1821" height="236" key="GridCell.Tab.0.bottom" timestamp="1588935223698">
       <screen x="45" y="27" width="1875" height="935" />
     </state>
-    <state width="1821" height="236" key="GridCell.Tab.0.bottom/45.27.1875.935@45.27.1875.935" timestamp="1588687989896" />
+    <state width="1821" height="236" key="GridCell.Tab.0.bottom/45.27.1875.935@45.27.1875.935" timestamp="1588935223698" />
     <state width="1817" height="236" key="GridCell.Tab.0.bottom/49.27.1871.935@49.27.1871.935" timestamp="1588506936838" />
-    <state width="1821" height="236" key="GridCell.Tab.0.center" timestamp="1588687989894">
+    <state width="1821" height="236" key="GridCell.Tab.0.center" timestamp="1588935223697">
       <screen x="45" y="27" width="1875" height="935" />
     </state>
-    <state width="1821" height="236" key="GridCell.Tab.0.center/45.27.1875.935@45.27.1875.935" timestamp="1588687989894" />
+    <state width="1821" height="236" key="GridCell.Tab.0.center/45.27.1875.935@45.27.1875.935" timestamp="1588935223697" />
     <state width="1817" height="236" key="GridCell.Tab.0.center/49.27.1871.935@49.27.1871.935" timestamp="1588506936837" />
-    <state width="1821" height="236" key="GridCell.Tab.0.left" timestamp="1588687989893">
+    <state width="1821" height="236" key="GridCell.Tab.0.left" timestamp="1588935223696">
       <screen x="45" y="27" width="1875" height="935" />
     </state>
-    <state width="1821" height="236" key="GridCell.Tab.0.left/45.27.1875.935@45.27.1875.935" timestamp="1588687989893" />
+    <state width="1821" height="236" key="GridCell.Tab.0.left/45.27.1875.935@45.27.1875.935" timestamp="1588935223696" />
     <state width="1817" height="236" key="GridCell.Tab.0.left/49.27.1871.935@49.27.1871.935" timestamp="1588506936836" />
-    <state width="1821" height="236" key="GridCell.Tab.0.right" timestamp="1588687989895">
+    <state width="1821" height="236" key="GridCell.Tab.0.right" timestamp="1588935223697">
       <screen x="45" y="27" width="1875" height="935" />
     </state>
-    <state width="1821" height="236" key="GridCell.Tab.0.right/45.27.1875.935@45.27.1875.935" timestamp="1588687989895" />
+    <state width="1821" height="236" key="GridCell.Tab.0.right/45.27.1875.935@45.27.1875.935" timestamp="1588935223697" />
     <state width="1817" height="236" key="GridCell.Tab.0.right/49.27.1871.935@49.27.1871.935" timestamp="1588506936837" />
     <state width="274" height="608" key="HiddenNamespacesPopup" timestamp="1588667289605">
       <screen x="45" y="27" width="1875" height="937" />
@@ -190,6 +219,6 @@
     <state x="645" y="228" width="672" height="678" key="search.everywhere.popup/45.27.1875.935@45.27.1875.935" timestamp="1588857984188" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/jianshu_crawl$start.coverage" NAME="start Coverage Results" MODIFIED="1588687895079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jianshu_crawl" />
+    <SUITE FILE_PATH="coverage/jianshu_crawl$start.coverage" NAME="start Coverage Results" MODIFIED="1588935160101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jianshu_crawl" />
   </component>
 </project>
