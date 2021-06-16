@@ -1,12 +1,170 @@
 # Scrapy+selenium爬取简书全站
 
-#### 环境
+-scrapy-
 
-- Ubuntu 18.04
+关于使用scrapy框架编写爬虫以及Ajax动态加载问题、反爬问题解决方案
 
-- Python 3.8
 
-- Scrapy 2.1
+总的来说，Python爬虫所做的事情分为两个部分，1：将网页的内容全部抓取下来，2：对抓取到的内容和进行解析，得到我们需要的信息。
+
+ 
+
+目前公认比较好用的爬虫框架为Scrapy，而且直接使用框架比自己使用requests、 beautifulsoup、 re包编写爬虫更加方便简单。
+
+ 
+![1610074274(1)](https://user-images.githubusercontent.com/50472785/122204370-a06e4500-ced1-11eb-9085-05cb73aa57f3.jpg)
+
+
+
+### 关于Scrapy框架
+
+
+
+简介： Scrapy是一个为了爬取网站数据，提取结构性数据而编写的应用框架。 其最初是为了 页面抓取 (更确切来说, 网络抓取 )所设计的， 也可以应用在获取API所返回的数据(例如 Amazon Associates Web Services ) 或者通用的网络爬虫。
+
+ 
+
+官方文档地址 ： http://scrapy-chs.readthedocs.io/zh_CN/1.0/index.html
+
+ 
+
+Scrapy安装 ：  pip install Scrapy
+
+ 
+
+创建Scrapy项目 ： scrapy startproject scrapyspider(projectname)
+
+该命令创建包涵下列内容的目录：
+
+ 
+
+这些文件分别是:
+
+scrapy.cfg: 项目的配置文件。
+scrapyspider/: 该项目的python模块。之后您将在此加入代码。
+scrapyspider/items.py: 项目中的item文件。
+scrapyspider/pipelines.py: 项目中的pipelines文件，用来执行保存数据的操作。
+scrapyspider/settings.py: 项目的设置文件。
+scrapyspider/spiders/: 放置爬虫代码的目录。
+
+首先，在items.py文件中声明需要提取的数据，Item 对象是种简单的容器，保 存了爬取到得数据。 其提供了 类似于词典(dictionary-like) 的API以及用于声明可 用字段的简单语法。许多Scrapy组件使用了Item提供的额外信息: exporter根据 Item声明的字段来导出 数据、 序列化可以通过Item字段的元数据(metadata) 来 定义、trackref 追踪Item 实例来帮助寻找内存泄露 (see 使用 trackref 调试内 存泄露) 等等。
+Item使用简单的class定义语法以及Field对象来声明。我们打开scrapyspider目录下的items.py文件写入下列代码声明Item：
+
+为了创建一个爬虫，首先需要继承scrapy.Spider类，定义以下三个属性：
+
+​	**1.name : 用于区别不同的爬虫，名字必须是唯一的. **
+
+​	**2.start_urls: 包含了Spider在启动时进行爬取的url列表。**
+
+​	**3.parse() 是spider的一个函数。 被调用时，每个初始URL完成下载后生成的 Response 对象将会作为唯一的参数传递给该函数，然后解析提取数据。**
+
+ 
+
+ 
+
+
+
+### 关于抓取Ajax异步加载的网站
+
+ 
+
+Ajax是什么：
+
+ 
+
+AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用的网页开发技术。
+
+通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。
+
+通过Ajax异步加载的网页内容在网页源码中是没有的，也就是之前介绍的方法中下载到的response中是解析不到我们想要的内容的。
+
+ 
+
+如何抓取AJAX异步加载页面：
+
+ 
+
+对于这类网页，我们一般采用两种方法：
+
+1、通过抓包找到异步加载请求的真正地址
+
+2、通过PhantomJS等无头浏览器执行JS代码后再抓取
+
+但是通常采取第一种方法，因为第二种方法使用无头浏览器会大大降低抓取的效率。
+
+ 
+
+文章信息网页源码中没有，并且采用鼠标下拉更新页面，这时需要我们在需要抓取的页面打开Chrome的开发者工具，选择network，实现一次下拉刷新
+
+ 
+
+
+
+ 
+
+发现新增了一个get请求，并且响应为JSON格式。观察JSON的内容，发现正是需要抓取的内容。
+
+抓取内容的问题解决了，接下来处理多页抓取问题，因为请求为get形式，所以首先进行几次下拉刷新，观察请求链接的变化，会发现请求的地址中只有start的值在变化，并且每次刷新增加20，其他都不变，所以我们更改这个参数就可以实现翻页。
+
+
+
+　　scrapy crawl name
+
+ 
+
+ 
+
+然而，很多时候ajax请求都会经过后端鉴权，不能直接构造URL获取。这时就可以通过PhantomJS、chromedriver等配合Selenium模拟浏览器动作，抓取经过js渲染后的页面。
+
+使用这种方法有时会遇到定位网页页面元素定位不准的情况，这时就要注意网页中的frame标签，frame标签有frameset、frame、iframe三种，frameset跟其他普通标签没有区别，不会影响到正常的定位，而frame与iframe对selenium定位而言是一样的，需要进行frame的跳转。（这两点暂不展开，在抓取中财网—数据引擎网站时就遇到此类问题）
+
+ 
+
+ 
+
+彩蛋：
+
+两个提高效率的Chrome插件：
+
+　　Toggle JavaScript  （检测网页哪些内容使用了异步加载）  
+
+　　JSON-handle （格式化Json串）
+
+ 
+
+ 
+
+### 关于突破爬虫反爬机制
+
+ 
+
+   目前使用到的反反爬手段主要有三个：
+
+ 
+
+1、在请求之间设置延时，限制请求速度。（使用python time库）
+
+ 
+
+2、在每次请求时都随机使用用户代理User-Agent，为了方便，在scrapy框架中，可以使用fake-useragent这个开源库。
+
+
+
+3、使用高匿代理ip，同样为了方便，在scrapy框架中编写爬虫，建议使用开源库 scrapy-proxies。
+
+
+
+
+
+
+
+### 环境
+
+- Windows 10
+
+- Python 3.7.4
+
+- Scrapy 
 
   
 
@@ -30,6 +188,13 @@
 - 异步存储数据到MySQL（提高存储效率）
 
 ---
+
+### 整个爬虫的执行流程
+
+- 首先从start_urls 里取出要执行的请求地址
+- 返回的内容经过下载中间件进行处理（selenium加载动态数据）
+- 经过中间件处理的数据（response）返回给爬虫进行提取数据
+- 提取出的数据返回给pipeline进行存储
 
 ### 实现
 
@@ -67,38 +232,33 @@ class JsSpider(CrawlSpider):
 - 同理Ajax也可能未加载完成，所以需要显示等待加载完成
 
 ```python
+import time
+
 from selenium import webdriver
 from scrapy.http.response.html import HtmlResponse
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.common.by import By
-
 
 class SeleniumDownloadMiddleware(object):
-    def __init__(self):
-        self.driver = webdriver.Chrome()
 
+    def __init__(self):
+        # 加载测试浏览器
+        self.driver = webdriver.Chrome(executable_path=r"D:\xsy的秘密小屋					 \Google\Google\Chrome\Application\chromedriver.exe")
+
+    # request: 则scrapy框架会去服务器加载资源
+    # reponse: 则跳过资源下载直接交给解析器方法
     def process_request(self, request, spider):
-        while True:
-            # 超时重新请求
-            try:
-                self.driver.set_page_load_timeout(1)
-                self.driver.get(request.url)
-            except:
-                pass
-            finally:
-                try:
-                    # 等待ajax加载，超时了就重来
-                    WebDriverWait(self.driver, 1).until(
-                        expected_conditions((By.CLASS_NAME, 'rEsl9f'))
-                    )
-                except:
-                    continue
-                finally:
+        self.driver.get(request.url)
+        time.sleep(2)
+        try:
+            while True:
+                showMore = self.driver.find_element_by_class_name('show-more')  # 获取标签
+                showMore.click()
+                time.sleep(0.5)
+                if not showMore:
                     break
-        url = self.driver.current_url
+        except:
+            pass
         source = self.driver.page_source
-        response = HtmlResponse(url=url, body=source, request=request, encoding='utf-8')
+        response = HtmlResponse(url=self.driver.current_url, body=source, request=request, encoding='utf-8')
         return response
 ```
 
@@ -179,8 +339,8 @@ class JianshuCrawlPipeline(object):
         dbparams = {
             'host': '127.0.0.1',
             'port': 3306,
-            'user': 'debian-sys-maint',
-            'password': 'lD3wteQ2BEPs5i2u',
+            'user': 'root',
+            'password': '3321',
             'database': 'jianshu',
             'charset': 'utf8mb4',
         }
@@ -264,10 +424,6 @@ class JinshuAsyncPipeline(object):
 - selenium方式访问页面时，会经常出现加载卡顿的情况，使用超时设置和显示等待避免浪费时间
 
 
-
-**Github：https://github.com/aduner/jianshu-crawl**
-
-**博客地址：https://www.cnblogs.com/aduner/p/12852616.html**
 
 
 
