@@ -206,7 +206,8 @@ AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML），是�
 
 ##### 第一步：分析简书文章的url
 
-![image-20200508174922373](img/image-20200508174922373.png)
+![1623840035(1)](https://user-images.githubusercontent.com/50472785/122205097-72d5cb80-ced2-11eb-8cd6-1cca787bde99.jpg)
+
 
 可以看到url规则为`jianshu.com/p/文章ID`，然后再crawlsipder中设置url规则
 
